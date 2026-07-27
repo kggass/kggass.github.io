@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KG Gás e Água | Entrega Rápida com o Leandro</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --azul-marinho: #1D3557;
+            --vermelho: #E63946;
+            --amarelo: #FFB703;
+            --branco: #FFFFFF;
+            --cinza-claro: #F8F9FA;
+            --texto: #333333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--cinza-claro);
+            color: var(--texto);
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--azul-marinho);
+            color: var(--branco);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--amarelo);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--vermelho);
+        }
+
+        .header-contact {
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--azul-marinho) 0%, #2b4c7e 100%);
+            color: var(--branco);
+            padding: 4rem 5%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 1.5rem;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            max-width: 800px;
+        }
+
+        .hero h1 span {
+            color: var(--amarelo);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            color: #e0e0e0;
+        }
+
+        .badge-delivery {
+            background-color: var(--vermelho);
+            color: var(--branco);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        }
+
+        .btn-cta {
+            background-color: var(--amarelo);
+            color: var(--azul-marinho);
+            padding: 14px 30px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 183, 3, 0.4);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-cta:hover {
+            transform: translateY(-3px);
+            background-color: #ffc334;
+        }
+
+        /* Products Section */
+        .products {
+            padding: 4rem 5%;
+            text-align: center;
+        }
+
+        .products h2 {
+            font-size: 2rem;
+            color: var(--azul-marinho);
+            margin-bottom: 2.5rem;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: var(--branco);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-top: 5px solid var(--vermelho);
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-card i {
+            font-size: 3rem;
+            color: var(--azul-marinho);
+            margin-bottom: 1rem;
+        }
+
+        .product-card h3 {
+            font-size: 1.4rem;
+            color: var(--azul-marinho);
+            margin-bottom: 0.5rem;
+        }
+
+        .product-card p {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Differentials */
+        .differentials {
+            background-color: var(--azul-marinho);
+            color: var(--branco);
+            padding: 3rem 5%;
+            text-align: center;
+        }
+
+        .diff-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 2rem auto 0;
+        }
+
+        .diff-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+
+        .diff-item i {
+            font-size: 2rem;
+            color: var(--amarelo);
+            margin-bottom: 0.8rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #111e33;
+            color: #aaa;
+            text-align: center;
+            padding: 2rem 5%;
+            font-size: 0.9rem;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        /* WhatsApp Floating Widget (Left Side) */
+        .wa-widget-container {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 1000;
+        }
+
+        .wa-float-btn {
+            background-color: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .wa-float-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .wa-chat-box {
+            position: absolute;
+            bottom: 75px;
+            left: 0;
+            width: 300px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .wa-chat-header {
+            background-color: #075e54;
+            color: white;
+            padding: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .wa-chat-header img {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: #fff;
+        }
+
+        .wa-chat-header .info h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .wa-chat-header .info span {
+            font-size: 0.75rem;
+            color: #d1d1d1;
+        }
+
+        .wa-chat-body {
+            padding: 15px;
+            background: #e5ddd5;
+            min-height: 120px;
+            max-height: 180px;
+            overflow-y: auto;
+        }
+
+        .wa-message-bubble {
+            background: white;
+            padding: 10px;
+            border-radius: 7px;
+            font-size: 0.85rem;
+            color: #333;
+            max-width: 85%;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .wa-chat-footer {
+            padding: 10px;
+            background: #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .wa-chat-footer textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            resize: none;
+            height: 50px;
+            font-size: 0.85rem;
+            outline: none;
+        }
+
+        .wa-chat-footer .char-counter {
+            font-size: 0.7rem;
+            color: #666;
+            text-align: right;
+        }
+
+        .wa-send-btn {
+            background-color: #25d366;
+            color: white;
+            border: none;
+            padding: 8px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            font-size: 0.9rem;
+        }
+
+        .wa-send-btn:hover {
+            background-color: #1ebe5d;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .wa-chat-box {
+                width: 280px;
+                left: -10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <i class="fa-solid fa-fire-flame-curved" style="color: var(--vermelho);"></i> KG <span>GÁS</span>
+        </div>
+        <div class="header-contact">
+            <i class="fa-solid fa-phone" style="color: var(--amarelo);"></i> (27) 99279-0796
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="badge-delivery">
+            <i class="fa-solid fa-motorcycle"></i> Entrega Rápida via Motoboy
+        </div>
+        <h1>Gás de Cozinha e Água Mineral com <span>Agilidade e Confiança</span></h1>
+        <p>Peça agora mesmo o seu Gás P13 ou Água Mineral com o entregador Leandro. Atendimento rápido, seguro e direto no seu WhatsApp!</p>
+        <a href="https://wa.me/5527992790796?text=Olá,%20gostaria%20de%20pedir%20gás%20ou%20água!" target="_blank" class="btn-cta">
+            <i class="fa-brands fa-whatsapp"></i> Fazer Pedido Agora
+        </a>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products">
+        <h2>Nossos Produtos</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <i class="fa-solid fa-gas-pump"></i>
+                <h3>Gás de Cozinha (P13)</h3>
+                <p>Gás de qualidade com segurança garantida para a sua casa ou comércio. Entrega ágil direto na sua porta.</p>
+                <a href="https://wa.me/5527992790796?text=Olá,%20preciso%20de%20um%20Gás%20P13!" target="_blank" class="btn-cta" style="font-size: 0.9rem; padding: 10px 20px;">Pedir Gás</a>
+            </div>
+            <div class="product-card">
+                <i class="fa-solid fa-bottle-droplet"></i>
+                <h3>Água Mineral</h3>
+                <p>Água mineral pura e cristalina para manter sua família hidratada. Consulte opções de galões disponíveis.</p>
+                <a href="https://wa.me/5527992790796?text=Olá,%20preciso%20de%20Água%20Mineral!" target="_blank" class="btn-cta" style="font-size: 0.9rem; padding: 10px 20px;">Pedir Água</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Differentials -->
+    <section class="differentials">
+        <h2 style="color: var(--amarelo);">Por que escolher o KG Gás?</h2>
+        <div class="diff-grid">
+            <div class="diff-item">
+                <i class="fa-solid fa-bolt"></i>
+                <h3>Atendimento Ágil</h3>
+                <p>O Leandro vai até você com rapidez para que você não fique na mão.</p>
+            </div>
+            <div class="diff-item">
+                <i class="fa-solid fa-shield-halved"></i>
+                <h3>Segurança Garantida</h3>
+                <p>Produtos rigorosamente selecionados e procedência confiável.</p>
+            </div>
+            <div class="diff-item">
+                <i class="fa-solid fa-heart"></i>
+                <h3>Atendimento Dedicado</h3>
+                <p>Compromisso total com a satisfação de cada cliente da região.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p><strong>KG GÁS</strong> - O seu distribuidor de confiança</p>
+        <p>Entregador responsável: Leandro | Telefone: (27) 99279-0796 | E-mail: Kggas.sac@gmail.com</p>
+        <p style="margin-top: 1rem; font-size: 0.8rem;">Serviço exclusivo de entrega própria via motoboy (não possui retirada no local).</p>
+    </footer>
+
+    <!-- Floating WhatsApp Widget (Left Side) -->
+    <div class="wa-widget-container">
+        <div class="wa-chat-box" id="whatsapp-chat-box">
+            <div class="wa-chat-header">
+                <div class="info">
+                    <h4>Leandro - KG Gás</h4>
+                    <span>Online agora</span>
+                </div>
+            </div>
+            <div class="wa-chat-body">
+                <div class="wa-message-bubble">
+                    Olá! 👋 Precisa de Gás ou Água com urgência? Digite sua mensagem abaixo que eu te atendo rapidinho!
+                </div>
+            </div>
+            <div class="wa-chat-footer">
+                <textarea id="whatsapp-message-input" maxlength="250" placeholder="Digite sua mensagem aqui..." oninput="updateCharCount()"></textarea>
+                <div class="char-counter"><span id="char-count">0</span>/250</div>
+                <button class="wa-send-btn" onclick="sendToWhatsApp()">
+                    <i class="fa-brands fa-whatsapp"></i> Enviar Mensagem
+                </button>
+            </div>
+        </div>
+        <div class="wa-float-btn" onclick="toggleChat()" title="Fale conosco no WhatsApp">
+            <i class="fa-brands fa-whatsapp"></i>
+        </div>
+    </div>
+
+    <!-- Script to Handle Chat Interactions -->
+    <script>
+        function toggleChat() {
+            const chatBox = document.getElementById('whatsapp-chat-box');
+            chatBox.style.display = chatBox.style.display === 'flex' ? 'none' : 'flex';
+        }
+
+        function updateCharCount() {
+            const textarea = document.getElementById('whatsapp-message-input');
+            const charCount = document.getElementById('char-count');
+            charCount.textContent = textarea.value.length;
+        }
+
+        function sendToWhatsApp() {
+            const input = document.getElementById('whatsapp-message-input');
+            const message = input.value.trim();
+            const phone = '5527992790796';
+            
+            let finalMessage = message !== '' ? message : 'Olá! Gostaria de pedir gás ou água!';
+            const encodedMessage = encodeURIComponent(finalMessage);
+            
+            window.open(`https://wa.me/${phone}?text=${encodedMessage}`, '_blank');
+        }
+    </script>
+</body>
+</html>
