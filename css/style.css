@@ -1,6 +1,32 @@
-/* ==========================================================================
-   1. Variáveis & Design Tokens
-   ========================================================================== */
+/* ==================================================
+   1. Reset
+   ================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition: none !important; animation: none !important; }
+}
+
+body {
+    background-color: var(--cinza-claro);
+    color: var(--texto);
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* ==================================================
+   2. Variáveis
+   ================================================== */
 :root {
     --azul-marinho: #1D3557;
     --vermelho: #E63946;
@@ -29,35 +55,9 @@
     }
 }
 
-/* ==========================================================================
-   2. Reset & Base
-   ========================================================================== */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-@media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-    * { transition: none !important; animation: none !important; }
-}
-
-body {
-    background-color: var(--cinza-claro);
-    color: var(--texto);
-    overflow-x: hidden;
-    line-height: 1.6;
-}
-
-/* ==========================================================================
-   3. Tipografia & Componentes Globais (Botões, Cards, Badges)
-   ========================================================================== */
+/* ==================================================
+   3. Tipografia
+   ================================================== */
 .section-title {
     font-size: 2rem;
     color: var(--azul-marinho);
@@ -70,6 +70,9 @@ body {
     font-size: 0.95rem;
 }
 
+/* ==================================================
+   4. Layout
+   ================================================== */
 .btn {
     display: inline-flex;
     align-items: center;
@@ -134,9 +137,9 @@ body {
     gap: 6px;
 }
 
-/* ==========================================================================
-   4. Header
-   ========================================================================== */
+/* ==================================================
+   5. Header
+   ================================================== */
 .header {
     background-color: var(--azul-marinho);
     color: #fff;
@@ -183,9 +186,9 @@ body {
     font-weight: 600;
 }
 
-/* ==========================================================================
-   5. Hero Section
-   ========================================================================== */
+/* ==================================================
+   6. Hero
+   ================================================== */
 .hero {
     background: linear-gradient(135deg, var(--azul-marinho) 0%, #2b4c7e 100%);
     color: #fff;
@@ -237,9 +240,9 @@ body {
     opacity: 0.8;
 }
 
-/* ==========================================================================
-   6. Produtos & Cards
-   ========================================================================== */
+/* ==================================================
+   7. Produtos
+   ================================================== */
 .products {
     padding: 4rem 5%;
     max-width: 1200px;
@@ -265,9 +268,9 @@ body {
     gap: 1rem;
 }
 
-/* ==========================================================================
-   7. FAQ Section
-   ========================================================================== */
+/* ==================================================
+   8. Diferenciais
+   ================================================== */
 .faq {
     padding: 4rem 5%;
     max-width: 1200px;
@@ -294,9 +297,9 @@ body {
     margin-bottom: 0.5rem;
 }
 
-/* ==========================================================================
-   8. Footer
-   ========================================================================== */
+/* ==================================================
+   9. Footer
+   ================================================== */
 .footer {
     background-color: #0b1421;
     color: #8899ac;
@@ -314,9 +317,9 @@ body {
     margin-inline: auto;
 }
 
-/* ==========================================================================
-   9. Widget WhatsApp
-   ========================================================================== */
+/* ==================================================
+   10. WhatsApp Widget
+   ================================================== */
 .wa-widget-container {
     position: fixed;
     bottom: 20px;
@@ -437,49 +440,34 @@ body {
 }
 
 .wa-chat-footer textarea {
-    px60100largura;
-    enchimento: 10px;
-    fronteira: 1px sólido #ccc;
-    raio de borda: var(--raio-sm);
-    redimensionar: nenhum;
-    altaescarada60px;
-    tamanho da fonte: 0,85rem;
-    esboço: nenhum;
-    fundo: var(--branco);
-    cor: var(--texto);
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: var(--radius-sm);
+    resize: none;
+    height: 60px;
+    font-size: 0.85rem;
+    outline: none;
+    background: var(--branco);
+    color: var(--texto);
 }
 
-.contador de caracteres {
-    tamanho da fonte: 0,7rem;
-    cor: #666;
-    alinhamento de texto: certo;
+.char-counter {
+    font-size: 0.7rem;
+    color: #666;
+    text-align: right;
 }
 
-/* ================================================
-   10. Animações e Microanimações
-   ================================================================== */
-.desvanecimento {
-    opacidade: 0;
-    transformar: difamar(20px);
-    transição: opacidade 0,6s facilidade, transformar 0,6s facilidade;
+/* ==================================================
+   11. Animações
+   ================================================== */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
-.fade-in.visível {
-    opacidade: 1;
-    transformar: difamar(0);
-}
-
-/* ================================================
-   11. Responsividade
-   =================================================================== */
-@mídia (largura máxima: 480px) {
-    .contador wa-widget {
-        fundo: 16px;
-        escarada: 16px;
-        certo: 16px;
-    }
-    .caixa de bate-papo wa {
-        largura: cálculo(100vw - 32px);
-        escarada: 0;
-    }
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
