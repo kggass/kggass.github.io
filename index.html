@@ -2,70 +2,68 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="janela de visualização" conteúdo="largura=largura do dispositivo, escala inicial=1,0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- SEO e Metatags -->
-    <title>KG Entrega | Logística Rápida de Gás e Água em Vila Velha</título>
-    <meta name="descrição" conteúdo="Entrega rápida de gás de cozinha e água mineral. Atendimento via WhatsApp com lógica ágil e parceiros autorizados da ANP.">
-    <meta name="palavras-chave" conteúdo="gás, gás de cozinha, água mineral, entrega de gás, motoboy, ANP, Vila Velha">
-    <meta name="autor" conteúdo="KG Entrega">
-    <meta name="robôs" conteúdo="indexar, seguir">
-    <link rel="ícone" href="favicon.ico">
+    <!-- SEO & Metatags -->
+    <title>KG Entrega | Logística Rápida de Gás e Água em Vila Velha</title>
+    <meta name="description" content="Entrega rápida de gás de cozinha e água mineral. Atendimento via WhatsApp com logística ágil e parceiros autorizados da ANP.">
+    <meta name="keywords" content="gás, gás de cozinha, água mineral, entrega de gás, motoboy, ANP, Vila Velha">
+    <meta name="author" content="KG Entrega">
+    <meta name="robots" content="index, follow">
+    <link rel="icon" href="favicon.ico">
 
-    <!-- Gráfico aberto -->
-    <meta propriedade="og:título" conteúdo="KG Entrega - Logística Rápida">
-    <meta propriedade="og:descrição" conteúdo="Peça seu Gás P13 ou Água Mineral pelo WhatsApp. Entrega expressa na sua porta.">
-    <meta propriedade="og:tipo" conteúdo="site">
-    <meta propriedade="og:url" conteúdo="https://kggas.github.io/">
-    <!-- <meta propriedade="og:imagem" conteúdo="https://seusite.com/img/banner.jpg"> -->
+    <!-- Open Graph -->
+    <meta property="og:title" content="KG Entrega - Logística Rápida">
+    <meta property="og:description" content="Peça seu Gás P13 ou Água Mineral pelo WhatsApp. Entrega expressa na sua porta.">
+    <meta property="og:type" content="website">
 
-    <!-- Desempenho: Google Fonts Preconnect -->
-    <link rela="pré-conexão" href="https://fonts.googleapis.com">
-    <link rela="pré-conexão" href="https://fonts.gstatic.com" origem cruzada>
+    <!-- Performance: Google Fonts Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-    <!-- CSS modular -->
-    <link rela="folha de estilo" href="css/estilo.css">
+    <!-- CSS Externo -->
+    <link rel="stylesheet" href="css/style.css">
 
     <!-- Schema.org -->
-    <roteiro tipo="aplicativo/ld+json">
+    <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Serviço de Entrega",
-      "nome": "KG Entrega",
-      "descrição": "Serviço lógico de entrada rápida de gás e água.",
-      "telefone": "+5527992790796",
-      "área atendida": {
-        "@type": "Cidade",
-        "nome": "Vila Velha"
+      "@type": "DeliveryService",
+      "name": "KG Entrega",
+      "description": "Serviço logístico de entrega rápida de gás e água.",
+      "telephone": "+5527992790796",
+      "areaServed": {
+        "@type": "City",
+        "name": "Vila Velha"
       },
-      "provedor": {
-        "@type": "Pessoa",
-        "nome": "Leandro"
+      "provider": {
+        "@type": "Person",
+        "name": "Leandro"
       }
     }
-    </roteiro>
-</cabeça>
-<corpo>
+    </script>
+</head>
+<body>
 
-    <!-- Cabeçalho -->
-    <cabeçalho id="cabeçalho diretor">
-        <dividir classe="contêiner de caboçalho">
-            <dividir classe="logotipo" rótulo de ária="KG Entrega">
-                <svg largura="24" alta="24" caixa de visualização="0 0 24 24" preencher="var(--vermelho)"><path d="M12 2L1 21h22L12 2zm0 3.83L19.5 19h-15L12 5.83z"/></svg>
-                KG <extensão>ENTREGA</extensão>
-            </dividir>
-            <dividir classe="contato de cabeçalho">
-                <svg largura="16" altura="16" viewBox="0 0 24 24" fill="var(--amarelo)"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+    <!-- Header -->
+    <header id="main-header" class="header">
+        <div class="header-container">
+            <div class="logo" aria-label="KG Entrega">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="var(--vermelho)"><path d="M12 2L1 21h22L12 2zm0 3.83L19.5 19h-15L12 5.83z"/></svg>
+                KG <span>ENTREGA</span>
+            </div>
+            <div class="header-contact">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--amarelo)"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
                 (27) 99279-0796
-            </dividir>
-        </dividir>
-    </cabeçalho>
+            </div>
+        </div>
+    </header>
 
     <main>
         <!-- Hero Section -->
         <section class="hero" aria-labelledby="hero-title">
-            <div class="badge-delivery fade-in">
+            <div class="badge fade-in">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15l-5-5 1.41-1.41L11 14.17l7.59-7.59L20 8l-9 9z"/></svg>
                 Parceria com Revendedores Autorizados
             </div>
@@ -76,56 +74,56 @@
                 <div class="stat-item"><strong>+1.500</strong><span>Entregas</span></div>
                 <div class="stat-item"><strong>98%</strong><span>Satisfação</span></div>
                 <div class="stat-item"><strong>25 min</strong><span>Tempo Médio</span></div>
-            </div>
+            </dividir>
 
-            <button class="btn btn-primary fade-in" aria-label="Solicitar entrega pelo WhatsApp" onclick="whatsappAPI.openWhatsApp('Olá, gostaria de solicitar uma entrega!')">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            <botão id="herói-cta-btn" classe="btn btn-primary fade-in" aria-label="Solicitar entrega pelo WhatsApp">
+                <svg largura="20" altura="20" caixa de visualização="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
                 Fazer Pedido Agora
-            </button>
-        </section>
+            </botão>
+        </seção>
 
-        <!-- Products Section -->
-        <section class="products fade-in" id="produtos" aria-labelledby="products-title">
-            <h2 id="products-title">Serviços de Entrega</h2>
-            <p class="subtitle-sec">Logística dedicada de motoboy para sua casa ou comércio.</p>
+        <!-- Seção de Produtos -->
+        <seção classe="produtos desaparecem" id="produtos" aria-labelledby="products-title">
+            <h2 id="título-dos-produtos" classe="título da seção">Serviços de Entrega</h2>
+            <p classe="seg-de-legenda">Logística dedicada de motoboy para sua casa ou comércio.</p>
             
-            <div class="product-grid">
-                <article class="product-card">
-                    <svg width="40" height="40" viewBox="0 0 24 24" fill="var(--azul-marinho)"><path d="M17 10h-2V7c0-1.66-1.34-3-3-3s-3 1.34-3 3v3H7c-1.1 0-2 .9-2 2v9c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2v-9c0-1.1-.9-2-2-2zm-6-3c0-.55.45-1 1-1s1 .45 1 1v3h-2V7zm2 11c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z"/></svg>
+            <dividir classe="rede de produtos">
+                <artigo classe="cartão">
+                    <svg largura="40" altura="40" caixa de visualização="0 0 24 24" fill="var(--azul-marinho)"><path d="M17 10h-2V7c0-1.66-1.34-3-3-3s-3 1.34-3 3v3H7c-1.1 0-2 .9-2 2v9c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2v-9c0-1.1-.9-2-2-2zm-6-3c0-.55.45-1 1-1s1 .45 1 1v3h-2V7zm2 11c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z"/></svg>
                     <h3>Gás de Cozinha (P13)</h3>
                     <p>Agilidade e cuidado no transporte do seu botijão. Origem garantida por parceiros.</p>
-                    <button class="btn btn-outline btn-small" onclick="whatsappAPI.openWhatsApp('Preciso de Gás P13')" aria-label="Pedir Gás">Pedir Gás</button>
-                </article>
+                    <botão classe="btn btn-esboço btn-pequeno produto-btn" data-msg="Preciso de Gás P13" aria-label="Pedir Gás P13">Pedir Gás</button>
+                </artigo>
 
-                <article class="product-card">
-                    <svg width="40" height="40" viewBox="0 0 24 24" fill="var(--azul-marinho)"><path d="M12 2c-5.33 4.55-8 8.48-8 11.8 0 4.98 3.8 8.2 8 8.2s8-3.22 8-8.2c0-3.32-2.67-7.25-8-11.8zm0 18c-3.35 0-6-2.57-6-6.2 0-2.34 1.95-5.44 6-9.14 4.05 3.7 6 6.79 6 9.14 0 3.63-2.65 6.2-6 6.2z"/></svg>
+                <artigo classe="cartão">
+                    <svg largura="40" alta="40" caixa de visualização="0 0 24 24" fill="var(--azul-marinho)"><path d="M12 2c-5.33 4.55-8 8.48-8 11.8 0 4.98 3.8 8.2 8 8.2s8-3.22 8-8.2c0-3.32-2.67-7.25-8-11.8zm0 18c-3.35 0-6-2.57-6-6.2 0-2.34 1.95-5.44 6-9.14 4.05 3.7 6 6.79 6 9.14 0 3.63-2.65 6.2-6 6.2z"/></svg>
                     <h3>Água Mineral (20L)</h3>
                     <p>Transporte rápido para não deixar faltar água potável na sua família.</p>
-                    <button class="btn btn-outline btn-small" onclick="whatsappAPI.openWhatsApp('Preciso de Água 20L')" aria-label="Pedir Água">Pedir Água</button>
-                </article>
-            </div>
-        </section>
+                    <botão classe="btn btn-esboço btn-pequeno produto-btn" data-msg="Preciso de Água 20L" aria-label="Pedir Água 20L">Pedir Água</button>
+                </artigo>
+            </dividir>
+        </sessão>
 
-        <!-- FAQ Section -->
-        <section class="faq fade-in" aria-labelledby="faq-title">
-            <h2 id="faq-title" style="color: var(--azul-marinho);">Perguntas Frequentes</h2>
-            <div class="faq-grid">
-                <article class="faq-item">
+        <!-- Seção de perguntas frequentes -->
+        <sessão classe="faq fade-in" ária-rotulado por="título-faq">
+            <h2 id="título-faq" classe="tículo da seção">Perguntas Frequentes</h2>
+            <dividir classe="grau de perguntas frequentes">
+                <artigo classe="item de perguntas frequentes">
                     <h4>Qual o tempo médio de entrega?</h4>
-                    <p>O Leandro prioriza o atendimento expresso, entregando em média em 25 minutos na região.</p>
-                </article>
-                <article class="faq-item">
+                    <p>O Leandro prioriza o atendimento expresso, entrando em mídia em 25 minutos na região.</p>
+                </artigo>
+                <artigo classe="item de perguntas frequentes">
                     <h4>Quais as formas de pagamento?</h4>
                     <p>Aceitamos PIX, Cartões (crédito e débito) na maquininha no momento da entrega, e dinheiro.</p>
-                </article>
-            </div>
-        </section>
-    </main>
+                </artigo>
+            </dividir>
+        </seção>
+forte</principal>
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content fade-in">
-            <p><strong>KG ENTREGA</strong> - Serviço Logístico Independente</p>
+    <!-- Rodapé -->
+    <rodapé classe="rodapé">
+        <dividir classe="fade-in do conteúdo do rodapé">
+            <p><forte>KG ENTREGA</forte> - Serviço Logístico Independente</p>
             <p>Entregador: Leandro | (27) 99279-0796</p>
             <dividir classe="isenção de responsabilidade legal">
                 * Aviso Legal: O KG Entrega atualizada como prestador de serviços logísticos e captação de pedestres. Produtos faturados por revendedores licenciados (ANP).
@@ -147,7 +145,6 @@
                 <dividir classe="bolha de mensagem wa">
                     Olá! 👋 Precisa de Gás ou Água? Escola uma operação ou digite baixo:
                 </dividir>
-                <!-- Mensagens rápidas -->
                 <dividir classe="mensagens rápidas">
                     <botão classe="chip" dados-msg="Preciso de Gás P13">Gás P13</button>
                     <botão classe="chip" dados-msg="Preciso de Água 20L">Água 20L</button>
@@ -168,6 +165,7 @@
         </dividir>
     </dividir>
 
+    <!-- JavaScript Externo -->
     <roteiro fonte="js/main.js" adiar></roteiro>
 </corpo>
 </HTML>
