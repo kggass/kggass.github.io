@@ -40,21 +40,55 @@ const Chat = {
         } else {
             chatBoxElement.classList.remove('active');
             chatBoxElement.setAttribute('aria-hidden', 'true');
+            // Clean up error state when closing
+            const errorElement = document.getElementById('wa-error');
+            if (errorElement) {
+                errorElement.textContent = '';
+                errorElement.style.display = 'none';
+            }
+            if (inputElement) {
+                inputElement.removeAttribute('aria-invalid');
+                inputElement.style.borderColor = '#ccc';
+            }
         }
     },
     updateCounter(inputElement, counterElement) {
         counterElement.textContent = inputElement.value.length;
+        const errorElement = document.getElementById('wa-error');
+        if (inputElement.value.trim().length >= CONFIG.minMessageLength) {
+            if (errorElement) {
+                errorElement.textContent = '';
+                errorElement.style.display = 'none';
+            }
+            inputElement.removeAttribute('aria-invalid');
+            inputElement.style.borderColor = '#ccc';
+        }
     },
     handleSend(inputElement, chatBoxElement, counterElement) {
         const msg = inputElement.value.trim();
+        const errorElement = document.getElementById('wa-error');
         if (msg.length >= CONFIG.minMessageLength) {
             Utils.sendToWhatsApp(msg);
             Chat.toggle(false, chatBoxElement, inputElement);
             inputElement.value = '';
             Chat.updateCounter(inputElement, counterElement);
+            if (errorElement) {
+                errorElement.textContent = '';
+                errorElement.style.display = 'none';
+            }
         } else {
             inputElement.style.borderColor = 'var(--vermelho)';
-            setTimeout(() => inputElement.style.borderColor = '#ccc', 1500);
+            inputElement.setAttribute('aria-invalid', 'true');
+            if (errorElement) {
+                errorElement.textContent = msg.length === 0
+                    ? 'Por favor, digite uma mensagem.'
+                    : `A mensagem deve ter pelo menos ${CONFIG.minMessageLength} caracteres.`;
+                errorElement.style.display = 'block';
+                inputElement.setAttribute('aria-describedby', 'wa-error');
+            }
+            setTimeout(() => {
+                inputElement.style.borderColor = '#ccc';
+            }, 1500);
         }
     }
 };

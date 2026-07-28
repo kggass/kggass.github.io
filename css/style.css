@@ -339,6 +339,7 @@ body {
     box-shadow: var(--shadow-lg);
     cursor: pointer;
     transition: var(--transition);
+    border: none;
 }
 
 .wa-float-btn:hover {
@@ -458,6 +459,15 @@ body {
     text-align: right;
 }
 
+.wa-error-msg {
+    color: var(--vermelho);
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-top: -2px;
+    margin-bottom: 2px;
+    text-align: left;
+}
+
 /* ==================================================
    11. Animações
    ================================================== */
@@ -470,4 +480,19 @@ body {
 .fade-in.visible {
     opacity: 1;
     transform: translateY(0);
+}
+
+/* ==================================================
+   12. Acessibilidade (Foco por Teclado)
+   ================================================== */
+button:focus-visible,
+textarea:focus-visible,
+a:focus-visible,
+[tabindex]:focus-visible {
+    outline: 3px solid var(--amarelo) !important;
+    outline-offset: 2px !important;
+}
+
+.wa-float-btn:focus-visible {
+    outline-offset: 4px !important;
 }
