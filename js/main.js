@@ -98,13 +98,24 @@ const Chat = {
  */
 const Header = {
     initScrollEffect(headerElement) {
+        // Bolt ⚡ Optimization:
+        // 1. Cache the 'scrolled' state in JS memory to avoid redundant DOM writes/classList calls
+        //    which trigger style recalculation & layout on every scroll frame.
+        // 2. Use `{ passive: true }` listener option to let the browser scroll the page immediately
+        //    on the compositor thread without waiting for JS execution, eliminating scroll jank.
+        let isScrolled = false;
+
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                headerElement.classList.add('scrolled');
-            } else {
-                headerElement.classList.remove('scrolled');
+            const shouldBeScrolled = window.scrollY > 50;
+            if (shouldBeScrolled !== isScrolled) {
+                isScrolled = shouldBeScrolled;
+                if (isScrolled) {
+                    headerElement.classList.add('scrolled');
+                } else {
+                    headerElement.classList.remove('scrolled');
+                }
             }
-        });
+        }, { passive: true });
     }
 };
 
