@@ -1,5 +1,5 @@
 /**
- * Configurações Centrais do Sistema
+ * CONFIG
  */
 const CONFIG = {
     phone: "5527992790796",
@@ -10,171 +10,170 @@ const CONFIG = {
 };
 
 /**
- * Função utilitária para formatar e codificar mensagens
+ * UTILS
  */
-const encodeMessage = (msg) => {
-    return encodeURIComponent(msg.trim());
-};
-
-/**
- * Abre o WhatsApp com a mensagem especificada
- */
-const sendToWhatsApp = (message) => {
-    const finalMsg = message && message.length >= CONFIG.minMessageLength 
-        ? message 
-        : CONFIG.defaultMessage;
-        
-    const url = `${CONFIG.whatsappURL}${CONFIG.phone}?text=${encodeMessage(finalMsg)}`;
-    window.open(url, '_blank', 'noopener,noreferrer');
-};
-
-/**
- * Controla a exibição da caixa de chat flutuante
- */
-const toggleChat = (forceState, chatBoxElement, inputElement) => {
-    const isActive = chatBoxElement.classList.contains('active');
-    const newState = typeof forceState === 'boolean' ? forceState : !isActive;
-    
-    if (newState) {
-        chatBoxElement.classList.add('active');
-        chatBoxElement.setAttribute('aria-hidden', 'false');
-        if (inputElement) inputElement.focus();
-    } else {
-        chatBoxElement.classList.remove('active');
-        chatBoxElement.setAttribute('aria-hidden', 'true');
+const Utils = {
+    encodeMessage(msg) {
+        return encodeURIComponent(msg.trim());
+    },
+    sendToWhatsApp(message) {
+        const finalMsg = message && message.length >= CONFIG.minMessageLength 
+            ? message 
+            : CONFIG.defaultMessage;
+        const url = `${CONFIG.whatsappURL}${CONFIG.phone}?text=${Utils.encodeMessage(finalMsg)}`;
+        window.open(url, '_blank', 'noopener,noreferrer');
     }
 };
 
 /**
- * Atualiza o contador de caracteres na interface
+ * CHAT
  */
-const updateCounter = (inputElement, counterElement) => {
-    const currentLength = inputElement.value.length;
-    counterElement.textContent = currentLength;
-};
-
-/**
- * Configura todos os ouvintes de eventos da página
- */
-const setupEvents = () => {
-    const header = document.getElementById('main-header');
-    const waTrigger = document.getElementById('wa-float-trigger');
-    const waChatBox = document.getElementById('wa-chat-box');
-    const waCloseBtn = document.getElementById('wa-close-btn');
-    const waInput = document.getElementById('wa-input');
-    const waSendBtn = document.getElementById('wa-send-btn');
-    const charCount = document.getElementById('char-count');
-    const chips = document.querySelectorAll('.chip');
-    const heroCtaBtn = document.getElementById('hero-cta-btn');
-    const productBtns = document.querySelectorAll('.product-btn');
-
-    // Header scroll effect
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            header.classList.add('scrolled');
+const Chat = {
+    toggle(forceState, chatBoxElement, inputElement) {
+        const isActive = chatBoxElement.classList.contains('active');
+        const newState = typeof forceState === 'boolean' ? forceState : !isActive;
+        
+        if (newState) {
+            chatBoxElement.classList.add('active');
+            chatBoxElement.setAttribute('aria-hidden', 'false');
+            if (inputElement) inputElement.focus();
         } else {
-            header.classList.remove('scrolled');
+            chatBoxElement.classList.remove('active');
+            chatBoxElement.setAttribute('aria-hidden', 'true');
         }
-    });
-
-    // Intersection Observer para animações de scroll
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-    // Ações do Widget do WhatsApp
-    if (waTrigger && waChatBox) {
-        waTrigger.addEventListener('click', () => toggleChat(undefined, waChatBox, waInput));
-    }
-
-    if (waCloseBtn && waChatBox) {
-        waCloseBtn.addEventListener('click', () => toggleChat(false, waChatBox, waInput));
-    }
-
-    // Atalhos de Chips (Mensagens prontas)
-    chips.forEach(chip => {
-        chip.addEventListener('click', (e) => {
-            waInput.value = e.target.dataset.msg;
-            updateCounter(waInput, charCount);
-            waInput.focus();
-        });
-    });
-
-    // Contador e input de texto
-    if (waInput && charCount) {
-        waInput.addEventListener('input', () => updateCounter(waInput, charCount));
-        
-        waInput.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' && !e.shiftKey) {
-                e.preventDefault();
-                handleMessageSend(waInput, waChatBox, charCount);
-            }
-        });
-    }
-
-    if (waSendBtn && waInput && waChatBox && charCount) {
-        waSendBtn.addEventListener('click', () => handleMessageSend(waInput, waChatBox, charCount));
-    }
-
-    // Botões de CTA principais da página
-    if (heroCtaBtn) {
-        heroCtaBtn.addEventListener('click', () => {
-            sendToWhatsApp('Olá, gostaria de solicitar uma entrega!');
-        });
-    }
-
-    productBtns.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            const msg = e.target.dataset.msg || 'Olá, preciso de atendimento!';
-            sendToWhatsApp(msg);
-        });
-    });
-
-    // Fechar ao pressionar ESC ou clicar fora
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && waChatBox && waChatBox.classList.contains('active')) {
-            toggleChat(false, waChatBox, waInput);
+    },
+    updateCounter(inputElement, counterElement) {
+        counterElement.textContent = inputElement.value.length;
+    },
+    handleSend(inputElement, chatBoxElement, counterElement) {
+        const msg = inputElement.value.trim();
+        if (msg.length >= CONFIG.minMessageLength) {
+            Utils.sendToWhatsApp(msg);
+            Chat.toggle(false, chatBoxElement, inputElement);
+            inputElement.value = '';
+            Chat.updateCounter(inputElement, counterElement);
+        } else {
+            inputElement.style.borderColor = 'var(--vermelho)';
+            setTimeout(() => inputElement.style.borderColor = '#ccc', 1500);
         }
-    });
-
-    document.addEventListener('click', (e) => {
-        if (waChatBox && waChatBox.classList.contains('active')) {
-            const isClickInside = waChatBox.contains(e.target) || waTrigger.contains(e.target);
-            if (!isClickInside) {
-                toggleChat(false, waChatBox, waInput);
-            }
-        }
-    });
+    }
 };
 
 /**
- * Valida e despacha a mensagem do chat flutuante
+ * HEADER
  */
-const handleMessageSend = (inputElement, chatBoxElement, counterElement) => {
-    const msg = inputElement.value.trim();
-    if (msg.length >= CONFIG.minMessageLength) {
-        sendToWhatsApp(msg);
-        toggleChat(false, chatBoxElement, inputElement);
-        inputElement.value = '';
-        updateCounter(inputElement, counterElement);
-    } else {
-        inputElement.style.borderColor = 'var(--vermelho)';
-        setTimeout(() => inputElement.style.borderColor = '#ccc', 1500);
+const Header = {
+    initScrollEffect(headerElement) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                headerElement.classList.add('scrolled');
+            } else {
+                headerElement.classList.remove('scrolled');
+            }
+        });
     }
 };
 
 /**
- * Inicialização do Sistema
+ * ANIMAÇÕES
+ */
+const Animations = {
+    initFadeIn() {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    }
+};
+
+/**
+ * EVENTOS
+ */
+const Eventos = {
+    setupListeners() {
+        const header = document.getElementById('main-header');
+        const waTrigger = document.getElementById('wa-float-trigger');
+        const waChatBox = document.getElementById('wa-chat-box');
+        const waCloseBtn = document.getElementById('wa-close-btn');
+        const waInput = document.getElementById('wa-input');
+        const waSendBtn = document.getElementById('wa-send-btn');
+        const charCount = document.getElementById('char-count');
+        const chips = document.querySelectorAll('.chip');
+        const heroCtaBtn = document.getElementById('hero-cta-btn');
+        const productBtns = document.querySelectorAll('.product-btn');
+
+        if (header) Header.initScrollEffect(header);
+        Animations.initFadeIn();
+
+        if (waTrigger && waChatBox) {
+            waTrigger.addEventListener('click', () => Chat.toggle(undefined, waChatBox, waInput));
+        }
+
+        if (waCloseBtn && waChatBox) {
+            waCloseBtn.addEventListener('click', () => Chat.toggle(false, waChatBox, waInput));
+        }
+
+        chips.forEach(chip => {
+            chip.addEventListener('click', (e) => {
+                waInput.value = e.target.dataset.msg;
+                Chat.updateCounter(waInput, charCount);
+                waInput.focus();
+            });
+        });
+
+        if (waInput && charCount) {
+            waInput.addEventListener('input', () => Chat.updateCounter(waInput, charCount));
+            waInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    Chat.handleSend(waInput, waChatBox, charCount);
+                }
+            });
+        }
+
+        if (waSendBtn && waInput && waChatBox && charCount) {
+            waSendBtn.addEventListener('click', () => Chat.handleSend(waInput, waChatBox, charCount));
+        }
+
+        if (heroCtaBtn) {
+            heroCtaBtn.addEventListener('click', () => Utils.sendToWhatsApp('Olá, gostaria de solicitar uma entrega!'));
+        }
+
+        productBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const msg = e.target.dataset.msg || 'Olá, preciso de atendimento!';
+                Utils.sendToWhatsApp(msg);
+            });
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && waChatBox && waChatBox.classList.contains('active')) {
+                Chat.toggle(false, waChatBox, waInput);
+            }
+        });
+
+        document.addEventListener('click', (e) => {
+            if (waChatBox && waChatBox.classList.contains('active')) {
+                const isClickInside = waChatBox.contains(e.target) || waTrigger.contains(e.target);
+                if (!isClickInside) {
+                    Chat.toggle(false, waChatBox, waInput);
+                }
+            }
+        });
+    }
+};
+
+/**
+ * INIT
  */
 const init = () => {
-    setupEvents();
+    Eventos.setupListeners();
 };
 
-document.addEventListener('DOMContentLoaded', init);
+document.addEventListener("DOMContentLoaded", init);
