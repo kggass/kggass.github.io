@@ -17,8 +17,10 @@ const Utils = {
         return encodeURIComponent(msg.trim());
     },
     sendToWhatsApp(message) {
-        const finalMsg = message && message.length >= CONFIG.minMessageLength 
-            ? message 
+        // Enforce maximum input length and clean inputs (Sentinel 🛡️ Security & Stability Enhancement)
+        const cleanedMsg = typeof message === 'string' ? message.trim() : '';
+        const finalMsg = cleanedMsg.length >= CONFIG.minMessageLength
+            ? cleanedMsg.substring(0, CONFIG.maxCharacters)
             : CONFIG.defaultMessage;
         const url = `${CONFIG.whatsappURL}${CONFIG.phone}?text=${Utils.encodeMessage(finalMsg)}`;
         window.open(url, '_blank', 'noopener,noreferrer');
