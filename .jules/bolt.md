@@ -1,0 +1,5 @@
+# Bolt's Journal - KG Entrega
+
+## 2025-02-14 - Redundant DOM Mutation & Passive Event Listeners on Scroll
+**Learning:** Scroll event listeners fire continuously during user scrolling. Reading `window.scrollY` and unconditionally writing to the DOM via classList operations (even if the class is already present) triggers redundant evaluation, style recalculation overhead, and can lead to scroll jank. By caching the scroll state in a local JavaScript variable, we can avoid modifying the DOM entirely except when the state actually changes. Furthermore, using `{ passive: true }` instructs the browser's compositor thread that the event listener will not call `preventDefault()`, allowing it to scroll the page immediately without blocking, resulting in much smoother animations on low-end devices and mobile browsers.
+**Action:** Always throttle or cache state checks in global or window scroll listeners, and use the `{ passive: true }` option for scroll/wheel/touch listeners to prevent compositor jank.
