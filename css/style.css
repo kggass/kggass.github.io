@@ -1,4 +1,6 @@
-/* Variáveis CSS */
+/* ==========================================================================
+   1. Variáveis & Design Tokens
+   ========================================================================== */
 :root {
     --azul-marinho: #1D3557;
     --vermelho: #E63946;
@@ -18,7 +20,6 @@
     --transition: all 0.3s ease;
 }
 
-/* Dark Mode Automático */
 @media (prefers-color-scheme: dark) {
     :root {
         --cinza-claro: #121212;
@@ -28,7 +29,9 @@
     }
 }
 
-/* Resets & Base */
+/* ==========================================================================
+   2. Reset & Base
+   ========================================================================== */
 * {
     margin: 0;
     padding: 0;
@@ -40,7 +43,6 @@ html {
     scroll-behavior: smooth;
 }
 
-/* Desativar animações para usuários sensíveis */
 @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     * { transition: none !important; animation: none !important; }
@@ -53,37 +55,21 @@ body {
     line-height: 1.6;
 }
 
-/* Header com Blur no Scroll */
-header {
-    background-color: var(--azul-marinho);
-    color: #fff;
-    padding: 1rem 5%;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    transition: var(--transition);
+/* ==========================================================================
+   3. Tipografia & Componentes Globais (Botões, Cards, Badges)
+   ========================================================================== */
+.section-title {
+    font-size: 2rem;
+    color: var(--azul-marinho);
+    margin-bottom: 0.5rem;
 }
 
-header.scrolled {
-    background-color: rgba(29, 53, 87, 0.9);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    box-shadow: var(--shadow-sm);
+.subtitle-sec {
+    color: #666;
+    margin-bottom: 2.5rem;
+    font-size: 0.95rem;
 }
 
-.header-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo { font-size: 1.4rem; font-weight: 800; color: var(--amarelo); display: flex; align-items: center; gap: 8px;}
-.logo span { color: var(--vermelho); }
-.header-contact { font-size: 0.9rem; display: flex; align-items: center; gap: 8px; font-weight: 600;}
-
-/* Botões Padronizados */
 .btn {
     display: inline-flex;
     align-items: center;
@@ -105,40 +91,38 @@ header.scrolled {
     box-shadow: 0 4px 15px rgba(255, 183, 3, 0.3);
 }
 
-.btn-primary:hover { transform: translateY(-3px); background-color: #ffc334; }
+.btn-primary:hover {
+    transform: translateY(-3px);
+    background-color: #ffc334;
+}
 
 .btn-outline {
     background-color: transparent;
     border: 2px solid var(--vermelho);
     color: var(--vermelho);
 }
-.btn-outline:hover { background-color: var(--vermelho); color: #fff; }
+
+.btn-outline:hover {
+    background-color: var(--vermelho);
+    color: #fff;
+}
 
 .btn-whatsapp {
     background-color: var(--wa-color);
     color: #fff;
     width: 100%;
 }
-.btn-whatsapp:hover { background-color: var(--wa-dark); }
-.btn-small { padding: 8px 16px; font-size: 0.9rem; }
 
-/* Hero Section */
-.hero {
-    background: linear-gradient(135deg, var(--azul-marinho) 0%, #2b4c7e 100%);
-    color: #fff;
-    padding: 4rem 5%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 1.5rem;
+.btn-whatsapp:hover {
+    background-color: var(--wa-dark);
 }
 
-.hero h1 { font-size: clamp(2rem, 5vw, 2.5rem); font-weight: 800; max-width: 800px; line-height: 1.2;}
-.hero h1 span { color: var(--amarelo); }
-.hero p { max-width: 650px; font-size: 1.05rem; opacity: 0.9; }
+.btn-small {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+}
 
-.badge-delivery {
+.badge {
     background-color: var(--vermelho);
     color: #fff;
     padding: 6px 14px;
@@ -150,7 +134,86 @@ header.scrolled {
     gap: 6px;
 }
 
-/* Stats (Social Proof) */
+/* ==========================================================================
+   4. Header
+   ========================================================================== */
+.header {
+    background-color: var(--azul-marinho);
+    color: #fff;
+    padding: 1rem 5%;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    transition: var(--transition);
+}
+
+.header.scrolled {
+    background-color: rgba(29, 53, 87, 0.9);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: var(--shadow-sm);
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--amarelo);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.logo span {
+    color: var(--vermelho);
+}
+
+.header-contact {
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+}
+
+/* ==========================================================================
+   5. Hero Section
+   ========================================================================== */
+.hero {
+    background: linear-gradient(135deg, var(--azul-marinho) 0%, #2b4c7e 100%);
+    color: #fff;
+    padding: 4rem 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.5rem;
+}
+
+.hero h1 {
+    font-size: clamp(2rem, 5vw, 2.5rem);
+    font-weight: 800;
+    max-width: 800px;
+    line-height: 1.2;
+}
+
+.hero h1 span {
+    color: var(--amarelo);
+}
+
+.hero p {
+    max-width: 650px;
+    font-size: 1.05rem;
+    opacity: 0.9;
+}
+
 .stats-container {
     display: flex;
     gap: 2rem;
@@ -158,22 +221,39 @@ header.scrolled {
     flex-wrap: wrap;
     justify-content: center;
 }
-.stat-item { display: flex; flex-direction: column; }
-.stat-item strong { font-size: 1.5rem; color: var(--amarelo); }
-.stat-item span { font-size: 0.85rem; opacity: 0.8; }
 
-/* Sections Comuns */
-.products, .faq { padding: 4rem 5%; max-width: 1200px; margin: 0 auto; text-align: center; }
-.products h2, .faq h2 { font-size: 2rem; color: var(--azul-marinho); margin-bottom: 0.5rem; }
-.subtitle-sec { color: #666; margin-bottom: 2.5rem; font-size: 0.95rem; }
+.stat-item {
+    display: flex;
+    flex-direction: column;
+}
 
-.product-grid, .faq-grid {
+.stat-item strong {
+    font-size: 1.5rem;
+    color: var(--amarelo);
+}
+
+.stat-item span {
+    font-size: 0.85rem;
+    opacity: 0.8;
+}
+
+/* ==========================================================================
+   6. Produtos & Cards
+   ========================================================================== */
+.products {
+    padding: 4rem 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.product-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
 }
 
-.product-card {
+.card {
     background: var(--branco);
     border-radius: var(--radius-md);
     padding: 2rem;
@@ -185,6 +265,22 @@ header.scrolled {
     gap: 1rem;
 }
 
+/* ==========================================================================
+   7. FAQ Section
+   ========================================================================== */
+.faq {
+    padding: 4rem 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.faq-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
 .faq-item {
     background: var(--branco);
     padding: 1.5rem;
@@ -192,19 +288,35 @@ header.scrolled {
     box-shadow: var(--shadow-sm);
     text-align: left;
 }
-.faq-item h4 { color: var(--azul-marinho); margin-bottom: 0.5rem; }
 
-/* Footer */
-footer {
+.faq-item h4 {
+    color: var(--azul-marinho);
+    margin-bottom: 0.5rem;
+}
+
+/* ==========================================================================
+   8. Footer
+   ========================================================================== */
+.footer {
     background-color: #0b1421;
     color: #8899ac;
     text-align: center;
     padding: 2.5rem 5%;
     font-size: 0.85rem;
 }
-.legal-disclaimer { margin-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem; font-size: 0.75rem; max-width: 800px; margin-inline: auto;}
 
-/* WhatsApp Widget Architecture */
+.legal-disclaimer {
+    margin-top: 1rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 1rem;
+    font-size: 0.75rem;
+    max-width: 800px;
+    margin-inline: auto;
+}
+
+/* ==========================================================================
+   9. Widget WhatsApp
+   ========================================================================== */
 .wa-widget-container {
     position: fixed;
     bottom: 20px;
@@ -225,7 +337,10 @@ footer {
     cursor: pointer;
     transition: var(--transition);
 }
-.wa-float-btn:hover { transform: scale(1.1); }
+
+.wa-float-btn:hover {
+    transform: scale(1.1);
+}
 
 .wa-chat-box {
     position: absolute;
@@ -242,7 +357,9 @@ footer {
     animation: scaleUp 0.3s ease forwards;
 }
 
-.wa-chat-box.active { display: flex; }
+.wa-chat-box.active {
+    display: flex;
+}
 
 @keyframes scaleUp {
     from { opacity: 0; transform: scale(0.8); }
@@ -250,45 +367,119 @@ footer {
 }
 
 .wa-chat-header {
-    cor de fundo: var(--wa-escuro);
-    cor: branco;
-    enchimento: 12px 16px;
-    exibir: flexível;
-    justificar-conteúdo: espanhol entre;
-    alinhar itens: centro;
+    background-color: var(--wa-dark);
+    color: white;
+    padding: 12px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
-.cabo de bate-papo wa h4 { tamanho da fonte: 0,95rem; }
-.período de caboçalho do wa-chat { tamanho da fonte: 0,75rem; opacidade: 0,8; }
-.wa-fechar-btn { fundo: nenhum; fronteira: nenhum; color: white; cursor: pointer; font-size: 1.2rem; }
 
-.wa-chat-corpo { enchimento: 15px; fundo: #e5ddd5; }
-.wa-bolha de mensagem { fundo: branco; enchimento: 10px; border-radius: 0 8px 8px 8px; font-size: 0.85rem; color: #333; max-width: 90%; box-shadow: var(--sombra-sm); margin-bottom: 10px;}
+.wa-chat-header h4 {
+    font-size: 0.95rem;
+}
 
-.mensagens rápidas { exibir: flexível; lacuna: 8px; flex-wrap: wrap; }
-.lasca { fundo: #dcf8c6; fronteira: 1px sólido #c2e1aa; padding: 6px 10px; border-radius: 16px; font-size: 0.75rem; cursor: pointer; color: #333;}
-.chip:par { fundo: #cce9b6; }
+.wa-chat-header span {
+    font-size: 0.75rem;
+    opacity: 0.8;
+}
 
-.wa-chat-footer { enchimento: 12px; fundo: var(--cinza-claro); display: flex; flex-direction: column; gap: 8px; }
-.área de texto do rodapé wa-chat {
-    largura: 100%;
+.wa-close-btn {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+.wa-chat-body {
+    padding: 15px;
+    background: #e5ddd5;
+}
+
+.wa-message-bubble {
+    background: white;
+    padding: 10px;
+    border-radius: 0 8px 8px 8px;
+    font-size: 0.85rem;
+    color: #333;
+    max-width: 90%;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 10px;
+}
+
+.quick-messages {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.chip {
+    background: #dcf8c6;
+    border: 1px solid #c2e1aa;
+    padding: 6px 10px;
+    border-radius: 16px;
+    font-size: 0.75rem;
+    cursor: pointer;
+    color: #333;
+}
+
+.chip:hover {
+    background: #cce9b6;
+}
+
+.wa-chat-footer {
+    padding: 12px;
+    background: var(--cinza-claro);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.wa-chat-footer textarea {
+    px60100largura;
     enchimento: 10px;
     fronteira: 1px sólido #ccc;
     raio de borda: var(--raio-sm);
     redimensionar: nenhum;
-    alta: 60px;
+    altaescarada60px;
     tamanho da fonte: 0,85rem;
     esboço: nenhum;
     fundo: var(--branco);
     cor: var(--texto);
 }
-.contador de caracteres { tamanho da fonte: 0,7rem; cor: #666; alinhamento de texto: right; }
 
-/* Microanimações: Revelação no Scroll */
-.desvanecimento { opacidade: 0; transformar: difamar(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
-.fade-in.visível { opacidade: 1; transformar: difamar(0); }
+.contador de caracteres {
+    tamanho da fonte: 0,7rem;
+    cor: #666;
+    alinhamento de texto: certo;
+}
 
-/* Correção Widget Móvel */
+/* ================================================
+   10. Animações e Microanimações
+   ================================================================== */
+.desvanecimento {
+    opacidade: 0;
+    transformar: difamar(20px);
+    transição: opacidade 0,6s facilidade, transformar 0,6s facilidade;
+}
+
+.fade-in.visível {
+    opacidade: 1;
+    transformar: difamar(0);
+}
+
+/* ================================================
+   11. Responsividade
+   =================================================================== */
 @mídia (largura máxima: 480px) {
-    .contador wa-widget { fundo: 16px; escarada: 16px; right: 16px; }
-    .caixa de bate-papo wa { largura: cálculo(100vw - 32px); left: 0; }
+    .contador wa-widget {
+        fundo: 16px;
+        escarada: 16px;
+        certo: 16px;
+    }
+    .caixa de bate-papo wa {
+        largura: cálculo(100vw - 32px);
+        escarada: 0;
+    }
 }
