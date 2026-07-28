@@ -1,0 +1,74 @@
+/* ==================================================
+   Responsive Design (Media Queries)
+   ================================================== */
+
+/* Tablets e Telas Médias (≤ 1024px) */
+@media (max-width: 1024px) {
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+    
+    .products, .faq {
+        padding: 3rem 4%;
+    }
+}
+
+/* Tablets Pequenos e Celulares Grandes (≤ 768px) */
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+
+    .hero {
+        padding: 3rem 5%;
+        gap: 1.2rem;
+    }
+
+    .hero h1 {
+        font-size: 1.9rem;
+    }
+
+    .stats-container {
+        gap: 1.5rem;
+    }
+
+    .product-grid, .faq-grid {
+        grid-template-columns: 1fr;
+        max-width: 450px;
+        margin: 0 auto;
+    }
+}
+
+/* Celulares Pequenos (≤ 480px) */
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 1.6rem;
+    }
+
+    .hero p {
+        font-size: 0.95rem;
+    }
+
+    .stats-container {
+        gap: 1rem;
+    }
+
+    .stat-item strong {
+        font-size: 1.3rem;
+    }
+
+    /* Adaptação crítica para o widget do WhatsApp não estourar a tela do celular */
+    .wa-widget-container {
+        bottom: 16px;
+        left: 16px;
+        right: 16px;
+    }
+
+    .wa-chat-box {
+        width: calc(100vw - 32px);
+        left: 0;
+        bottom: 70px;
+    }
+}
