@@ -16,9 +16,11 @@
 /* Tablets Pequenos e Celulares Grandes (≤ 768px) */
 @media (max-width: 768px) {
     .header-container {
-        flex-direction: column;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
         gap: 10px;
-        text-align: center;
     }
 
     .hero {
