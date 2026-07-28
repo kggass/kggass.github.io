@@ -460,6 +460,7 @@ body {
 }
 
 .wa-error-msg {
+    display: none;
     color: var(--vermelho);
     font-size: 0.75rem;
     font-weight: 600;
