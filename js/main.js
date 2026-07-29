@@ -10,6 +10,40 @@ const CONFIG = {
 };
 
 /**
+ * SECURITY (Anti-copy, Anti-fraud, Rate-limiting)
+ */
+const Security = {
+    lastSubmitTime: 0,
+    init() {
+        if (window.self !== window.top) {
+            window.top.location = window.self.location;
+            document.documentElement.style.display = 'none';
+        }
+        document.addEventListener('contextmenu', e => e.preventDefault());
+        document.addEventListener('dragstart', e => e.preventDefault());
+        document.addEventListener('keydown', e => {
+            const ctrlCmd = e.ctrlKey || e.metaKey;
+            if (
+                e.key === 'F12' ||
+                (ctrlCmd && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'J' || e.key === 'j' || e.key === 'C' || e.key === 'c')) ||
+                (ctrlCmd && (e.key === 'U' || e.key === 'u' || e.key === 'S' || e.key === 's'))
+            ) {
+                e.preventDefault();
+            }
+        });
+    },
+    checkSpam() {
+        const now = Date.now();
+        if (now - this.lastSubmitTime < 3000) return false;
+        this.lastSubmitTime = now;
+        return true;
+    },
+    sanitize(text) {
+        return typeof text === 'string' ? text.replace(/<[^>]*>/g, '').trim() : '';
+    }
+};
+
+/**
  * UTILS
  */
 const Utils = {
@@ -17,8 +51,15 @@ const Utils = {
         return encodeURIComponent(msg.trim());
     },
     sendToWhatsApp(message) {
-        // Enforce maximum input length and clean inputs (Sentinel 🛡️ Security & Stability Enhancement)
-        const cleanedMsg = typeof message === 'string' ? message.trim() : '';
+        if (!Security.checkSpam()) {
+            const errorElement = document.getElementById('wa-error');
+            if (errorElement) {
+                errorElement.textContent = 'Aguarde 3 segundos para enviar novamente.';
+                errorElement.style.display = 'block';
+            }
+            return;
+        }
+        const cleanedMsg = Security.sanitize(message);
         const finalMsg = cleanedMsg.length >= CONFIG.minMessageLength
             ? cleanedMsg.substring(0, CONFIG.maxCharacters)
             : CONFIG.defaultMessage;
@@ -157,6 +198,7 @@ const Eventos = {
 
         if (header) Header.initScrollEffect(header);
         Animations.initFadeIn();
+        Security.init();
 
         if (waTrigger && waChatBox) {
             waTrigger.addEventListener('click', () => Chat.toggle(undefined, waChatBox, waInput));
